@@ -1,0 +1,20 @@
+﻿
+@model IEnumerable<Booooooooooooooooooook.Models.Category>
+
+@{
+	ViewBag.Title = "Book Store";
+}
+
+<h2>Categories: </h2>
+<p>
+	Select:
+</p>
+<img style="width:600px;height:400px;" src="https://drive.google.com/uc?id=1zXgdQwD6Tn-cjMpiZ9-sjsgF95Qv6TyI" alt="Smiley face" align="right">
+<ul>
+	@foreach (var category in Model)
+	{
+		<li>
+			@Html.ActionLink(category.Name, "Browse", new { category = category.Name })
+		</li>
+	}
+</ul>

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Booooooooooooooooooook.Models.Book>
+
+@{
+	ViewBag.Title = "Home Page";
+}
+<head>
+
+</head>
+<h4> Choose Genre: </h4>
+<li>@{Html.RenderAction("Category", "Store");}</li>
+<br /><br /><br />
+<div id="carouselBlk">
+	<div id="myCarousel" class="carousel slide">
+		<div class="carousel-inner">
+			<div class="item active">
+				<div class="container">
+					<a href="/Account/Register"><img style="width:800px;height:600px;" src="~/Content/Images/6.jpeg" alt="special offers" /></a>
+					<div class="carousel-caption">
+						<h4>Frederick Douglass</h4>
+						<p>Once you learn to read, You will be forever free </p>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="container">
+					<a href="/Account/Register"><img style="width:800px;height:600px;" src="~/Content/Images/2.jpeg" alt="" /></a>
+					<div class="carousel-caption">
+						<p>You can't buy happiness but you can buy books and that's kind of the same thing </p>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="container">
+					<a href="/Account/Register"><img style="width:800px;height:600px;" src="~/Content/Images/1.jpg" alt="" /></a>
+					<div class="carousel-caption">
+						<h4>William Nicholson</h4>
+						<p>We read to know that we are not alone</p>
+					</div>
+
+				</div>
+			</div>
+			<div class="item">
+				<div class="container">
+					<a href="/Account/Register"><img style="width:800px;height:600px;" src="~/Content/Images/7.jpg" alt="" /></a>
+					<div class="carousel-caption">
+						<h4>Joseph Addison</h4>
+						<p>Reading is to the mind what exercise is to the body</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+		<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+	</div>
+</div>
+
+<li>@{Html.RenderAction("Category", "Store");}</li>
+
+
+

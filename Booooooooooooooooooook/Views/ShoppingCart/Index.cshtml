@@ -1,0 +1,78 @@
+﻿@model Booooooooooooooooooook.Viewsss.ShoppingCart
+@{
+	ViewBag.Title = "Index";
+}
+
+<script src="/Scripts/jquery-1.4.4.min.js"
+		type="text/javascript"></script>
+<script type="text/javascript">
+	$(function () {
+		$(".RemoveLink").click(function () {
+			var recordToDelete = $(this).attr("data-id");
+			if (recordToDelete != '') {
+			
+				$.post("/ShoppingCart/RemoveFromCart", { "id": recordToDelete },
+					function (data) {
+						if (data.ItemCount == 0) {
+							$('#row-' + data.DeleteId).fadeOut('slow');
+						} else {
+							$('#item-count-' + data.DeleteId).text(data.ItemCount);
+						}
+						$('#cart-total').text(data.CartTotal);
+						$('#update-message').text(data.Message);
+						$('#cart-status').text('Cart (' + data.CartCount + ')');
+					});
+			}
+		});
+	});
+</script>
+<h3>
+	<em>Review</em> your cart:
+</h3>
+<div id="update-message">
+</div>
+<table>
+	<tr>
+		<th>
+			Book
+		</th>
+		<th>
+			Price
+		</th>
+		<th>
+			Number
+		</th>
+		<th></th>
+	</tr>
+	@foreach (var book in Model.Books)
+	{
+		<tr id="row-@book.SaleId">
+			<td>
+				@Html.ActionLink(book.Book.Name, "Details", "Store", new { id = book.BookId }, null)
+			</td>
+			<td>
+				@book.Book.Price
+			</td>
+			<td id="item-count-@book.SaleId">
+				@book.Num
+			</td>
+			<td>
+				<a href="#" class="RemoveLink"
+				   data-id="@book.SaleId">
+					@Html.ActionLink("Remove", "Remove", "ShoppingCart", new { id = book.BookId }, null)
+				</a>
+			</td>
+		</tr>
+	}
+	<tr>
+		<td>
+			Total
+		</td>
+		<td id="total">
+			@Model.Total
+		</td>
+	</tr>
+</table>
+<p class="btn btn-default">
+	@Html.ActionLink("Buy", "Create", "Orders")
+</p>
